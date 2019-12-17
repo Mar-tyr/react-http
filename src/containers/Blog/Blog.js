@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
-import axios from 'axios';
+import axios from '../../axios';
 import './Blog.css';
 
 class Blog extends Component {
