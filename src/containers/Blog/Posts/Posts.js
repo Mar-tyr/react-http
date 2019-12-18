@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Post from '../../../components/Post/Post';
 import axios from '../../../axios';
+import { Route } from 'react-router-dom';
 import './Posts.css';
+import FullPost from '../FullPost/FullPost';
 
 class Posts extends Component {
   state = {
@@ -39,7 +41,16 @@ class Posts extends Component {
       );
     });
 
-    return <section className="Posts">{posts}</section>;
+    return (
+      <div>
+        <section className="Posts">{posts}</section>
+        <Route
+          path={this.props.match.url + '/:id'}
+          exact
+          component={FullPost}
+        />
+      </div>
+    );
   }
 }
 

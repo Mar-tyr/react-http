@@ -13,12 +13,25 @@ class FullPost extends Component {
     });
   };
 
-  componentDidMount(prevProps, prevState, snapshot) {
+  loadData = () => {
     if (this.props.match.params.id) {
-      axios.get('/posts/' + this.props.match.params.id).then((response) => {
-        this.setState({ loadedPost: response.data });
-      });
+      if (
+        this.state.loadedPost === null ||
+        this.state.loadedPost.id != this.props.match.params.id
+      ) {
+        axios.get('/posts/' + this.props.match.params.id).then((response) => {
+          this.setState({ loadedPost: response.data });
+        });
+      }
     }
+  };
+
+  componentDidMount(prevProps, prevState, snapshot) {
+    this.loadData();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.loadData();
   }
 
   render() {
