@@ -9,7 +9,7 @@ class Posts extends Component {
   };
 
   postSelectedHandler = (selectedPostID) => {
-    this.setState({ selectedPostID: selectedPostID });
+    this.props.history.push('/posts/' + selectedPostID);
   };
 
   componentDidMount() {
